@@ -61,3 +61,15 @@ print(f'Total: {locale.currency(total)}')
 print(f'Average Change: {locale.currency(statistics.mean(avg_change[1:]))}')
 print(f'Greatest Increase in Profits: {incMonth} ({locale.currency(inc)})')
 print(f'Greatest Decrease in Profits: {decMonth} ({locale.currency(dec)})')
+
+output_path = os.path.join("output.txt")
+
+with open(output_path, 'w', newline="") as outfile:
+    txtwriter = csv.writer(outfile, delimiter=",")
+    txtwriter.writerow(["Financial Analysis"])
+    txtwriter.writerow(['-'*20])
+    txtwriter.writerow([f'Total Months: {months}'])
+    txtwriter.writerow([f'Total: {locale.currency(total)}'])
+    txtwriter.writerow([f'Average Change: {locale.currency(statistics.mean(avg_change[1:]))}'])
+    txtwriter.writerow([f'Greatest Increase in Profits: {incMonth} ({locale.currency(inc)})'])
+    txtwriter.writerow([f'Greatest Decrease in Profits: {decMonth} ({locale.currency(dec)})'])
